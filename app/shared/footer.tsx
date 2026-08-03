@@ -12,17 +12,16 @@ const Footer = () => {
   const stage = useSelector((state: RootState) => state.stage.value);
   const dispatch = useDispatch();
 
-  const ref = theSteps[stage].stage;
-
-  console.log(stage, ref);
+  const nextRef = theSteps[stage]?.stage;
+  const prevRef = theSteps[stage - 2]?.stage;
 
   return (
     <div className="grid grid-cols-[1fr_3fr] gap-1">
-      <Link href={ref}>
+      <Link href={prevRef || "#"}>
         <button
-          disabled={stage === 0 ? true : false}
+          disabled={stage === 1}
           onClick={() => {
-            dispatch(decrement());
+            if (stage > 1) dispatch(decrement());
           }}
           className="w-full text-center py-2 border border-gray-500 mt-5 cursor-pointer"
         >
@@ -30,11 +29,11 @@ const Footer = () => {
         </button>
       </Link>
 
-      <Link href={ref}>
+      <Link href={nextRef || "#"}>
         <button
-          disabled={stage === 3 ? true : false}
+          disabled={stage === 4}
           onClick={() => {
-            dispatch(increment());
+            if (stage < 4) dispatch(increment());
           }}
           className="w-full text-center py-2 border border-gray-500 mt-5 cursor-pointer"
         >

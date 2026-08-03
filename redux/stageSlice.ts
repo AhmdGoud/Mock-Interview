@@ -4,7 +4,7 @@ interface StageType {
   value: number;
 }
 
-const initState: StageType = { value: 0 };
+const initState: StageType = { value: 1 };
 
 const stageSlice = createSlice({
   name: "stage",
