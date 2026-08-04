@@ -5,12 +5,15 @@ import { steps } from "./navbar";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../redux/store";
 import { increment, decrement } from "../../redux/stageSlice";
+// import { changeDataState } from "@/redux/isDataFullSlice";
 
 const theSteps = steps;
 
 const Footer = () => {
   const stage = useSelector((state: RootState) => state.stage.value);
   const dispatch = useDispatch();
+
+  const dataState = useSelector((state: RootState) => state.isDataFull.value);
 
   const nextRef = theSteps[stage]?.stage;
   const prevRef = theSteps[stage - 2]?.stage;
@@ -31,11 +34,12 @@ const Footer = () => {
 
       <Link href={nextRef || "#"}>
         <button
-          disabled={stage === 4}
+          // disabled={stage === 4 || !dataState}
           onClick={() => {
+            // dispatch(changeDataState());
             if (stage < 4) dispatch(increment());
           }}
-          className="w-full text-center py-2 border border-gray-500 mt-5 cursor-pointer"
+          className={`w-full text-center py-2 border border-gray-500 mt-5 ${dataState ? "bg-blue-600 cursor-pointer" : "cursor-not-allowed"} cursor-pointer`}
         >
           Continue &rarr;
         </button>

@@ -1,13 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { changeDataState } from "@/redux/isDataFullSlice";
 
-export default function Upload() {
+export default function UploadResume() {
   const [file, setFile] = useState<string | undefined>("");
 
-  const handelFileName = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const dispatch = useDispatch();
+
+  const handelAddFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0].name;
     setFile(file);
+    dispatch(changeDataState());
+  };
+
+  const handelRemoveFile = () => {
+    setFile("");
+    dispatch(changeDataState());
   };
 
   return (
@@ -28,7 +38,7 @@ export default function Upload() {
               type="file"
               accept=".pdf"
               className="hidden"
-              onChange={(e) => handelFileName(e)}
+              onChange={(e) => handelAddFile(e)}
             />
             <h2 className="text-2xl font-semibold text-white">
               Drag & drop your PDF here
@@ -43,6 +53,12 @@ export default function Upload() {
             <p className="text-green-600">Resume uploaded successfully</p>
             <p className="text-green-600 border-2 p-2 rounded-md border-green-500">
               {file}
+              <span
+                onClick={() => handelRemoveFile()}
+                className="text-red-700 ml-2 font-bold text-xl cursor-pointer"
+              >
+                x
+              </span>
             </p>
           </div>
         )}

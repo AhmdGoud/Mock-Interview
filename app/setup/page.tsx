@@ -1,3 +1,9 @@
+import JobDetails from "./jobDetails";
+
 export default function Setup() {
-  return <>setup</>;
+  return (
+    <>
+      <JobDetails />
+    </>
+  );
 }
