@@ -10,10 +10,11 @@ import { increment, decrement } from "../../redux/stageSlice";
 const theSteps = steps;
 
 const Footer = () => {
-  const stage = useSelector((state: RootState) => state.stage.value);
   const dispatch = useDispatch();
 
+  const stage = useSelector((state: RootState) => state.stage.value);
   const dataState = useSelector((state: RootState) => state.isDataFull.value);
+  // const jobData = useSelector((state: RootState) => state.jobData);
 
   const nextRef = theSteps[stage]?.stage;
   const prevRef = theSteps[stage - 2]?.stage;

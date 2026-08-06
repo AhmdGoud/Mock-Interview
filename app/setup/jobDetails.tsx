@@ -1,6 +1,25 @@
 "use client";
 
+import { useDispatch } from "react-redux";
+import { handelChangeData } from "@/redux/jobDetailsSlice";
+import { AppDispatch } from "@/redux/store";
+
 export default function JobDetails() {
+  const dispatch = useDispatch<AppDispatch>();
+
+  function handelDispatch(
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) {
+    dispatch(
+      handelChangeData({
+        name: e.target.name,
+        value: e.target.value,
+      }),
+    );
+  }
+
   return (
     <div className="mt-5 mb-2">
       <div className="flex justify-between items-center mb-3">
@@ -19,6 +38,8 @@ export default function JobDetails() {
         </div>
 
         <textarea
+          name="jobDescription"
+          onChange={(e) => handelDispatch(e)}
           placeholder="paste the job description here..."
           rows={8}
           className="w-full bg-[#111] border border-gray-800 rounded-md px-4 py-3 text-sm placeholder:text-gray-700 outline-none focus:border-gray-600 resize-none"
@@ -35,6 +56,8 @@ export default function JobDetails() {
           </div>
 
           <input
+            name="roleTitle"
+            onChange={(e) => handelDispatch(e)}
             type="text"
             placeholder="e.g. Frontend Developer"
             className="w-full h-12 bg-[#111] border border-gray-800 rounded-md px-4 text-sm placeholder:text-gray-700 outline-none focus:border-gray-600"
@@ -46,7 +69,11 @@ export default function JobDetails() {
             Seniority
           </label>
 
-          <select className="w-full h-12 bg-[#111] border border-gray-800 rounded-md px-4 text-sm outline-none focus:border-gray-600 appearance-none">
+          <select
+            name="seniorityLevel"
+            onChange={(e) => handelDispatch(e)}
+            className="w-full h-12 bg-[#111] border border-gray-800 rounded-md px-4 text-sm outline-none focus:border-gray-600 appearance-none"
+          >
             <option>Junior</option>
             <option>Mid-level</option>
             <option>Senior</option>
@@ -61,7 +88,11 @@ export default function JobDetails() {
           Number of Questions
         </label>
 
-        <select className="w-full h-12 bg-[#111] border border-gray-800 rounded-md px-4 text-sm outline-none focus:border-gray-600 appearance-none">
+        <select
+          name="numberOfQuestions"
+          onChange={(e) => handelDispatch(e)}
+          className="w-full h-12 bg-[#111] border border-gray-800 rounded-md px-4 text-sm outline-none focus:border-gray-600 appearance-none"
+        >
           <option>3 — quick session</option>
           <option>5 — standard</option>
           <option>7 — thorough</option>
