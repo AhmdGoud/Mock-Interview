@@ -2,22 +2,31 @@
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { changeDataState } from "@/redux/isDataFullSlice";
+import { changeResumeStatus, fillResumeText } from "@/redux/isResumeUpSlice";
+
+import extractedResumeText from "./extractResume";
 
 export default function UploadResume() {
-  const [file, setFile] = useState<string | undefined>("");
+  const [file, setFile] = useState<File | null>(null);
 
   const dispatch = useDispatch();
 
   const handelAddFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0].name;
+    const file = e.target.files?.[0] || null;
     setFile(file);
-    dispatch(changeDataState());
+    dispatch(changeResumeStatus());
+
+    if (file) handelExtractFile(file);
   };
 
   const handelRemoveFile = () => {
-    setFile("");
-    dispatch(changeDataState());
+    setFile(null);
+    dispatch(changeResumeStatus());
+  };
+
+  const handelExtractFile = async (file: File) => {
+    const resumeText = await extractedResumeText(file);
+    if (resumeText) dispatch(fillResumeText(resumeText));
   };
 
   return (
@@ -52,7 +61,7 @@ export default function UploadResume() {
           <div className="h-60 flex flex-col justify-center items-center border-2 rounded-md border-green-500 ">
             <p className="text-green-600">Resume uploaded successfully</p>
             <p className="text-green-600 border-2 p-2 rounded-md border-green-500">
-              {file}
+              {file.name}
               <span
                 onClick={() => handelRemoveFile()}
                 className="text-red-700 ml-2 font-bold text-xl cursor-pointer"

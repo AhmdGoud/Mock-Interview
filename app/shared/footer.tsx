@@ -5,7 +5,8 @@ import { steps } from "./navbar";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../redux/store";
 import { increment, decrement } from "../../redux/stageSlice";
-// import { changeDataState } from "@/redux/isDataFullSlice";
+
+// import GenerateQuestions from "../puter.js/GenerateQuestions";
 
 const theSteps = steps;
 
@@ -13,8 +14,13 @@ const Footer = () => {
   const dispatch = useDispatch();
 
   const stage = useSelector((state: RootState) => state.stage.value);
-  const dataState = useSelector((state: RootState) => state.isDataFull.value);
-  // const jobData = useSelector((state: RootState) => state.jobData);
+  const resumeState = useSelector(
+    (state: RootState) => state.isResumeUp.resumeText,
+  );
+
+  const jobDataState = useSelector((state: RootState) => state.jobData);
+  const isJobDetailsFull =
+    jobDataState.jobDescription && jobDataState.roleTitle;
 
   const nextRef = theSteps[stage]?.stage;
   const prevRef = theSteps[stage - 2]?.stage;
@@ -35,14 +41,14 @@ const Footer = () => {
 
       <Link href={nextRef || "#"}>
         <button
-          // disabled={stage === 4 || !dataState}
+          disabled={stage === 4 || !resumeState}
           onClick={() => {
-            // dispatch(changeDataState());
             if (stage < 4) dispatch(increment());
           }}
-          className={`w-full text-center py-2 border border-gray-500 mt-5 ${dataState ? "bg-blue-600 cursor-pointer" : "cursor-not-allowed"} cursor-pointer`}
+          className={`w-full text-center py-2 border border-gray-500 mt-5
+            ${isJobDetailsFull ? "bg-blue-600 cursor-pointer" : "cursor-not-allowed"} `}
         >
-          Continue &rarr;
+          {stage === 2 ? "Start Interview" : "Continue"} &rarr;
         </button>
       </Link>
     </div>

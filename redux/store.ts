@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import stageReducer from "./stageSlice";
-import dataStateReduce from "./isDataFullSlice";
+import resumeStateReduce from "./isResumeUpSlice";
 import jobDetailsReducer from "./jobDetailsSlice";
 
 const store = configureStore({
   reducer: {
     stage: stageReducer,
-    isDataFull: dataStateReduce,
+    isResumeUp: resumeStateReduce,
     jobData: jobDetailsReducer,
   },
 });

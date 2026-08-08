@@ -1,4 +1,4 @@
-import UploadResume from "./uploadResume";
+import UploadResume from "./handelResume/uploadResume";
 
 export default function Upload() {
   return (

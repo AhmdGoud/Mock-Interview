@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 import Providers from "./storeProvider";
 
@@ -32,6 +33,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <Script
+        src="https://js.puter.com/v2/"
+        strategy="afterInteractive"
+      ></Script>
+
       <body className="min-h-full flex flex-col pt-10 px-2 w-full md:w-3/5 lg:w-1/2 mx-auto">
         <Providers>
           <Navbar />
