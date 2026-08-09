@@ -7,14 +7,14 @@ import { changeResumeStatus, fillResumeText } from "@/redux/isResumeUpSlice";
 import extractedResumeText from "./extractResume";
 
 export default function UploadResume() {
-  const [file, setFile] = useState<File | null>(null);
-
   const dispatch = useDispatch();
+
+  const [file, setFile] = useState<File | null>(null);
 
   const handelAddFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
-    setFile(file);
     dispatch(changeResumeStatus());
+    setFile(file);
 
     if (file) handelExtractFile(file);
   };

@@ -5,7 +5,10 @@ interface DataType {
   resumeText: string;
 }
 
-const initialState: DataType = { isResumeUp: false, resumeText: "" };
+const initialState: DataType = {
+  isResumeUp: false,
+  resumeText: "",
+};
 
 const isResumeUp = createSlice({
   name: "isResumeUp",

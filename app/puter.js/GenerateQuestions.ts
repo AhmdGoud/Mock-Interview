@@ -13,7 +13,9 @@ export default function GenerateQuestions() {
   async function interviewQs(): Promise<string | unknown> {
     try {
       const response = await puter.ai.chat(
-        `give me 1 Q depending on this info , Resume: ${resumeText}, jobDescription:${jobData.jobDescription}
+        `generate ${jobData.numberOfQuestions} questions depending on this comming info in general 
+        not depending more on resume projects without using this sign *,
+        Resume: ${resumeText}, jobDescription:${jobData.jobDescription}
         roleTitle: ${jobData.roleTitle}, seniorityLevel: ${jobData.seniorityLevel},`,
         {
           model: "gpt-5.4-nano",

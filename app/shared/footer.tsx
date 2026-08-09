@@ -5,6 +5,7 @@ import { steps } from "./navbar";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../redux/store";
 import { increment, decrement } from "../../redux/stageSlice";
+import { changeResumeStatus } from "@/redux/isResumeUpSlice";
 
 // import GenerateQuestions from "../puter.js/GenerateQuestions";
 
@@ -15,7 +16,7 @@ const Footer = () => {
 
   const stage = useSelector((state: RootState) => state.stage.value);
   const resumeState = useSelector(
-    (state: RootState) => state.isResumeUp.resumeText,
+    (state: RootState) => state.isResumeUp.isResumeUp,
   );
 
   const jobDataState = useSelector((state: RootState) => state.jobData);
@@ -41,12 +42,13 @@ const Footer = () => {
 
       <Link href={nextRef || "#"}>
         <button
-          disabled={stage === 4 || !resumeState}
+          disabled={stage === 4 || (!resumeState && !isJobDetailsFull)}
           onClick={() => {
+            dispatch(changeResumeStatus());
             if (stage < 4) dispatch(increment());
           }}
           className={`w-full text-center py-2 border border-gray-500 mt-5
-            ${isJobDetailsFull ? "bg-blue-600 cursor-pointer" : "cursor-not-allowed"} `}
+            ${resumeState || isJobDetailsFull ? "bg-blue-600 cursor-pointer" : "cursor-not-allowed"} `}
         >
           {stage === 2 ? "Start Interview" : "Continue"} &rarr;
         </button>
