@@ -1,3 +1,9 @@
+import InterviewQuestions from "./interview";
+
 export default function Interview() {
-  return <>interview</>;
+  return (
+    <>
+      <InterviewQuestions />
+    </>
+  );
 }

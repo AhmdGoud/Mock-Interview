@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface QuestionsType {
-  questions: string[];
+  questions: string;
 }
 
 const initialState: QuestionsType = {
-  questions: [],
+  questions: "",
 };
 
 const interviewSlice = createSlice({

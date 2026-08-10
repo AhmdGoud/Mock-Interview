@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface DataType {
+export interface DataType {
   jobDescription: string;
   roleTitle: string;
   seniorityLevel: string;
@@ -10,8 +10,8 @@ interface DataType {
 const initialState: DataType = {
   jobDescription: "",
   roleTitle: "",
-  seniorityLevel: "",
-  numberOfQuestions: "",
+  seniorityLevel: "Junior",
+  numberOfQuestions: "3 — quick session",
 };
 
 const jobDetailsSlice = createSlice({

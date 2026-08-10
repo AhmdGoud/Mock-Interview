@@ -58,13 +58,13 @@ export default function UploadResume() {
             </div>
           </label>
         ) : (
-          <div className="h-60 flex flex-col justify-center items-center border-2 rounded-md border-green-500 ">
-            <p className="text-green-600">Resume uploaded successfully</p>
-            <p className="text-green-600 border-2 p-2 rounded-md border-green-500">
+          <div className="h-60 flex flex-col justify-center items-center border-2 rounded-md border-green-500">
+            <p className="text-green-500">Resume uploaded successfully</p>
+            <p className="text-green-500 border-2 p-2 rounded-md border-green-500">
               {file.name}
               <span
                 onClick={() => handelRemoveFile()}
-                className="text-red-700 ml-2 font-bold text-xl cursor-pointer"
+                className="text-red-600 ml-2 font-bold text-xl cursor-pointer"
               >
                 x
               </span>

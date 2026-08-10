@@ -8,7 +8,7 @@ import { AppDispatch } from "@/redux/store";
 export default function JobDetails() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const jobDataState = useSelector((state: RootState) => state.jobData);
+  const jobData = useSelector((state: RootState) => state.jobData);
 
   function handelDispatch(
     e: React.ChangeEvent<
@@ -42,7 +42,7 @@ export default function JobDetails() {
 
         <textarea
           name="jobDescription"
-          value={jobDataState.jobDescription}
+          value={jobData.jobDescription}
           onChange={(e) => handelDispatch(e)}
           placeholder="paste the job description here..."
           rows={8}
@@ -61,7 +61,7 @@ export default function JobDetails() {
 
           <input
             name="roleTitle"
-            value={jobDataState.roleTitle}
+            value={jobData.roleTitle}
             onChange={(e) => handelDispatch(e)}
             type="text"
             placeholder="e.g. Frontend Developer"
@@ -76,14 +76,13 @@ export default function JobDetails() {
 
           <select
             name="seniorityLevel"
-            value={jobDataState.seniorityLevel}
+            value={jobData.seniorityLevel}
             onChange={(e) => handelDispatch(e)}
             className="w-full h-12 bg-[#111] border border-gray-800 rounded-md px-4 text-sm outline-none focus:border-gray-600 appearance-none"
           >
             <option>Junior</option>
             <option>Mid-level</option>
             <option>Senior</option>
-            <option>Lead</option>
           </select>
         </div>
       </div>
@@ -96,14 +95,13 @@ export default function JobDetails() {
 
         <select
           name="numberOfQuestions"
-          value={jobDataState.numberOfQuestions}
+          value={jobData.numberOfQuestions}
           onChange={(e) => handelDispatch(e)}
           className="w-full h-12 bg-[#111] border border-gray-800 rounded-md px-4 text-sm outline-none focus:border-gray-600 appearance-none"
         >
           <option>3 — quick session</option>
           <option>5 — standard</option>
-          <option>7 — thorough</option>
-          <option>10 — full interview</option>
+          <option>7 — full interview</option>
         </select>
       </div>
     </div>
