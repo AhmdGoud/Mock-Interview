@@ -1,3 +1,9 @@
+import FinalResult from "./results";
+
 export default function Results() {
-  return <>results</>;
+  return (
+    <>
+      <FinalResult />
+    </>
+  );
 }

@@ -3,6 +3,7 @@
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function InterviewQuestions() {
   const questions = useSelector(
@@ -14,7 +15,8 @@ export default function InterviewQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answer, setAnswer] = useState("");
 
-  const progress = ((currentQuestion + 1) / arrayOfQuestions.length) * 100;
+  const progressBar = ((currentQuestion + 1) / arrayOfQuestions.length) * 100;
+  const isLastQuestion = currentQuestion === arrayOfQuestions.length - 1;
 
   if (!questions) {
     return (
@@ -26,19 +28,13 @@ export default function InterviewQuestions() {
   } else {
     return (
       <div className="mx-auto w-full max-w-2xl py-8">
-        {/* progress and tags  */}
+        {/* progress bar */}
         <div className="mb-8 flex items-start justify-between gap-6">
-          {/* <div className="flex max-w-[80%] flex-wrap gap-2">
-            <span className="rounded border border-[#303030] px-2.5 py-1.5 text-[10px] font-mono text-[#777]">
-              frontend
-            </span>
-          </div> */}
-
           <div className="flex min-w-32.5 items-center gap-3 pt-6">
             <div className="h-0.5 flex-1 bg-[#333]">
               <div
                 className="h-full bg-white"
-                style={{ width: `${progress}%` }}
+                style={{ width: `${progressBar}%` }}
               />
             </div>
 
@@ -50,7 +46,7 @@ export default function InterviewQuestions() {
 
         <div className="mb-8 h-px bg-[#252525]" />
 
-        {/* questions  */}
+        {/* question and answer*/}
         <section>
           <p className="mb-4 font-mono text-[10px] tracking-widest text-[#333]">
             QUESTION {currentQuestion + 1}
@@ -67,21 +63,25 @@ export default function InterviewQuestions() {
             className="h-32 w-full resize-none rounded border border-[#303030] bg-[#141414] p-4 text-sm text-white outline-none placeholder:text-[#383838] focus:border-[#555]"
           />
 
+          {/* words counter and next btn */}
           <div className="mt-3 flex items-center justify-between">
             <span className="font-mono text-[10px] text-[#333]">
               {answer.length} words
             </span>
 
-            <button
-              disabled={
-                !answer || currentQuestion + 1 === arrayOfQuestions.length
-              }
-              onClick={() => setCurrentQuestion(currentQuestion + 1)}
-              className={`rounded border border-[#292929] px-6 py-3 text-xs text-[#444] 
+            <Link href={isLastQuestion ? "/results" : "#"}>
+              <button
+                disabled={!answer}
+                onClick={() => {
+                  setCurrentQuestion(currentQuestion + 1);
+                  setAnswer("");
+                }}
+                className={`rounded border border-[#292929] px-6 py-3 text-xs text-[#444] 
                 ${answer ? "bg-gray-300 cursor-pointer" : "cursor-not-allowed"}`}
-            >
-              next →
-            </button>
+              >
+                {isLastQuestion ? "submit" : "next"} →
+              </button>
+            </Link>
           </div>
         </section>
       </div>

@@ -35,35 +35,36 @@ const Footer = () => {
     dispatch(setQuestions(questions));
   }
 
-  return (
-    <div className="grid grid-cols-[1fr_3fr] gap-1">
-      <Link href={prevRef || "#"}>
-        <button
-          disabled={stage === 1}
-          onClick={() => {
-            if (stage > 1) dispatch(decrement());
-          }}
-          className="w-full text-center py-2 border border-gray-500 mt-5 cursor-pointer"
-        >
-          Back
-        </button>
-      </Link>
+  if (stage < 3)
+    return (
+      <div className="grid grid-cols-[1fr_3fr] gap-1">
+        <Link href={prevRef || "#"}>
+          <button
+            disabled={stage === 1}
+            onClick={() => {
+              if (stage > 1) dispatch(decrement());
+            }}
+            className="w-full text-center py-2 border border-gray-500 mt-5 cursor-pointer"
+          >
+            Back
+          </button>
+        </Link>
 
-      <Link href={nextRef || "#"}>
-        <button
-          disabled={stage === 4 || (!resumeState && !isJobDetailsFull)}
-          onClick={() => {
-            dispatch(changeResumeStatus());
-            if (isJobDetailsFull) generate();
-            if (stage < 4) dispatch(increment());
-          }}
-          className={`w-full text-center py-2 border border-gray-500 mt-5
+        <Link href={nextRef || "#"}>
+          <button
+            disabled={stage === 4 || (!resumeState && !isJobDetailsFull)}
+            onClick={() => {
+              dispatch(changeResumeStatus());
+              if (isJobDetailsFull) generate();
+              if (stage < 3) dispatch(increment());
+            }}
+            className={`w-full text-center py-2 border border-gray-500 mt-5
             ${resumeState || isJobDetailsFull ? "bg-blue-600 cursor-pointer" : "cursor-not-allowed"} `}
-        >
-          {stage === 2 ? "Start Interview" : "Continue"} &rarr;
-        </button>
-      </Link>
-    </div>
-  );
+          >
+            {stage === 2 ? "Start Interview" : "Continue"} &rarr;
+          </button>
+        </Link>
+      </div>
+    );
 };
 export default Footer;
