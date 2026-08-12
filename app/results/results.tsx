@@ -5,7 +5,8 @@ import type { RootState } from "../../redux/store";
 
 export default function FinalResult() {
   const jobData = useSelector((state: RootState) => state.jobData);
-  const results = useSelector((state: RootState) => state.interview.result);
+  const results = useSelector((state: RootState) => state.interview.results);
+  const parsedResults = results ? JSON.parse(results) : null;
 
   if (jobData && !results) {
     return (
@@ -26,7 +27,7 @@ export default function FinalResult() {
           <div className="flex items-center gap-8">
             <div className="flex items-end">
               <span className="text-5xl font-bold leading-none text-[#a66f73]">
-                1
+                {parsedResults.score}
               </span>
               <span className="mb-1 text-sm text-[#555]">/10</span>
             </div>
@@ -37,8 +38,24 @@ export default function FinalResult() {
               </h2>
 
               <p className="mt-2 max-w-3xl text-xs leading-6 text-[#666]">
-                {results}
+                <span>Overall Feedback: </span>
+                {parsedResults.overallFeedback}
               </p>
+
+              <p className="mt-2 -mb-2 text-sm leading-6 text-[#eee]">
+                feedback in detail:
+              </p>
+
+              {parsedResults.questionsFeedback.map((q: string, i: number) => {
+                return (
+                  <p
+                    key={i}
+                    className="mt-1 max-w-3xl text-xs leading-6 text-[#666]"
+                  >
+                    {q}
+                  </p>
+                );
+              })}
             </div>
           </div>
         </div>

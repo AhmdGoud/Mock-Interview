@@ -3,13 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 interface QuestionsType {
   questions: string;
   answers: string[];
-  result: string;
+  results: string;
 }
 
 const initialState: QuestionsType = {
   questions: "",
   answers: [],
-  result: "",
+  results: "",
 };
 
 const interviewSlice = createSlice({
@@ -25,7 +25,7 @@ const interviewSlice = createSlice({
     },
 
     updateResult: (state, action) => {
-      state.result = action.payload;
+      state.results = action.payload;
     },
   },
 });
