@@ -1,22 +1,33 @@
 "use client";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../redux/store";
 import { useState } from "react";
 import Link from "next/link";
+import { updateAnswers, updateResult } from "@/redux/interviewSlice";
+import { increment } from "../../redux/stageSlice";
+import finalResults from "../puter.js/GenerateResults";
 
 export default function InterviewQuestions() {
+  const dispatch = useDispatch();
+
   const questions = useSelector(
     (state: RootState) => state.interview.questions,
   );
 
   const arrayOfQuestions = questions?.split(/\d+[.)]\s*/).filter(Boolean);
+  const answers = useSelector((state: RootState) => state.interview.answers);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answer, setAnswer] = useState("");
 
   const progressBar = ((currentQuestion + 1) / arrayOfQuestions.length) * 100;
   const isLastQuestion = currentQuestion === arrayOfQuestions.length - 1;
+
+  async function getFinalRes() {
+    const results = await finalResults(arrayOfQuestions, answers);
+    dispatch(updateResult(results));
+  }
 
   if (!questions) {
     return (
@@ -74,7 +85,12 @@ export default function InterviewQuestions() {
                 disabled={!answer}
                 onClick={() => {
                   setCurrentQuestion(currentQuestion + 1);
+                  dispatch(updateAnswers(answer));
                   setAnswer("");
+                  if (isLastQuestion) {
+                    dispatch(increment());
+                    getFinalRes();
+                  }
                 }}
                 className={`rounded border border-[#292929] px-6 py-3 text-xs text-[#444] 
                 ${answer ? "bg-gray-300 cursor-pointer" : "cursor-not-allowed"}`}

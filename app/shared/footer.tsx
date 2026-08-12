@@ -8,7 +8,7 @@ import { increment, decrement } from "../../redux/stageSlice";
 import { changeResumeStatus } from "@/redux/isResumeUpSlice";
 
 import interviewQs from "../puter.js/GenerateQuestions";
-import { setQuestions } from "@/redux/interviewSlice";
+import { updateQuestions } from "@/redux/interviewSlice";
 
 const theSteps = steps;
 
@@ -32,7 +32,7 @@ const Footer = () => {
 
   async function generate() {
     const questions = await interviewQs(resumeText, jobData);
-    dispatch(setQuestions(questions));
+    dispatch(updateQuestions(questions));
   }
 
   if (stage < 3)
