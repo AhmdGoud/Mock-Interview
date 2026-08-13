@@ -42,7 +42,7 @@ export default function FinalResult() {
                 {parsedResults.overallFeedback}
               </p>
 
-              <p className="mt-2 -mb-2 text-sm leading-6 text-[#eee]">
+              <p className="mt-2 -mb-1 text-sm leading-6 text-[#aaa]">
                 feedback in detail:
               </p>
 
