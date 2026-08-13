@@ -4,15 +4,15 @@ A modern web application that helps users prepare for technical interviews throu
 
 ## 📸 Screenshots
 
-| Home                          | Product Details                 |
+| Upload Resume                 | Resume Uploaded                 |
 | ----------------------------- | ------------------------------- |
 | ![](./screenshots/resume.png) | ![](./screenshots/resumeUp.png) |
 
-| products                          | Authentication                   |
+| job Details                       | Interview                        |
 | --------------------------------- | -------------------------------- |
 | ![](./screenshots/jobDetails.png) | ![](./screenshots/interview.png) |
 
-| cart  
+| Results  
 | ---------------------------
 | ![](./screenshots/results.png)
 
@@ -30,9 +30,9 @@ A modern web application that helps users prepare for technical interviews throu
 - **Frontend Framework**: [Next.js 16](https://nextjs.org/) with React 19
 - **State Management**: [Redux Toolkit](https://redux-toolkit.js.org/)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
-- **Language**: TypeScript
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **AI Integration**: [Puter.ai](https://puter.com/) for question generation and response evaluation
-- **PDF Processing**: react-pdftotext for resume extraction
+- **PDF Processing**: [react-pdftotext](https://www.npmjs.com/package/react-pdftotext) for resume extraction
 
 ## 📁 Project Structure
 
