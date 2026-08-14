@@ -2,19 +2,23 @@
 
 A modern web application that helps users prepare for technical interviews through AI-powered mock interview sessions. The app generates customized interview questions based on your resume and target job details, then evaluates your responses.
 
+## 🌐 Live Demo
+
+**Demo:** https://ahmdgoud.github.io/Mock-Interview/
+
 ## 📸 Screenshots
 
-| Upload Resume                 | Resume Uploaded                 |
-| ----------------------------- | ------------------------------- |
-| ![](./screenshots/resume.png) | ![](./screenshots/resumeUp.png) |
+| Upload Resume                        | Resume Uploaded                        |
+| ------------------------------------ | -------------------------------------- |
+| ![](./public/screenshots/resume.png) | ![](./public/screenshots/resumeUp.png) |
 
-| job Details                       | Interview                        |
-| --------------------------------- | -------------------------------- |
-| ![](./screenshots/jobDetails.png) | ![](./screenshots/interview.png) |
+| job Details                              | Interview                               |
+| ---------------------------------------- | --------------------------------------- |
+| ![](./public/screenshots/jobDetails.png) | ![](./public/screenshots/interview.png) |
 
 | Results  
 | ---------------------------
-| ![](./screenshots/results.png)
+| ![](./public/screenshots/results.png)
 
 ## 🎯 Features
 
@@ -99,10 +103,6 @@ The app integrates with Puter.ai for:
 - **Response Evaluation**: Analyzes user answers and provides feedback
 
 **Note**: Make sure to configure Puter.ai credentials as required for AI features to function properly.
-
-## 🌐 Live Demo
-
-**Demo:** https://ahmdgoud.github.io/Mock-Interview/
 
 ## 👨‍💻 Author
 
