@@ -22,7 +22,14 @@ const Navbar = () => {
   return (
     <nav className="min-h-full flex flex-col ">
       <div className="flex justify-between p-1 pb-5 border-b-2 mb-5">
-        <h4>Mock-Interview</h4>
+        <h4
+          className="cursor-pointer"
+          onClick={() => {
+            window.location.href = "/";
+          }}
+        >
+          Mock-Interview
+        </h4>
         <p className="text-gray-500">Ai job interview</p>
       </div>
 

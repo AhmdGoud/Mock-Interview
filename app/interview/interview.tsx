@@ -14,16 +14,15 @@ export default function InterviewQuestions() {
   const questions = useSelector(
     (state: RootState) => state.interview.questions,
   );
+  console.log(questions); //
 
   const arrayOfQuestions = questions?.split(/\d+[.)]\s*/).filter(Boolean);
   const answers = useSelector((state: RootState) => state.interview.answers);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answer, setAnswer] = useState("");
-  console.log("before");
 
   const progressBar = ((currentQuestion + 1) / arrayOfQuestions?.length) * 100;
-  console.log("after");
   const isLastQuestion = currentQuestion === arrayOfQuestions.length - 1;
 
   async function getFinalRes() {
