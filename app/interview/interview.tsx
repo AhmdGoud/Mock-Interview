@@ -20,8 +20,10 @@ export default function InterviewQuestions() {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answer, setAnswer] = useState("");
+  console.log("before");
 
-  const progressBar = ((currentQuestion + 1) / arrayOfQuestions.length) * 100;
+  const progressBar = ((currentQuestion + 1) / arrayOfQuestions?.length) * 100;
+  console.log("after");
   const isLastQuestion = currentQuestion === arrayOfQuestions.length - 1;
 
   async function getFinalRes() {
