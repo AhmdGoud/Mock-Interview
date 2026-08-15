@@ -7,7 +7,7 @@ import type { RootState } from "../../redux/store";
 import { increment, decrement } from "../../redux/stageSlice";
 import { changeResumeStatus } from "@/redux/isResumeUpSlice";
 
-import interviewQs from "../puter.js/GenerateQuestions";
+import interviewQs from "../AIGenerates/GenerateQuestions";
 import { updateQuestions } from "@/redux/interviewSlice";
 
 const theSteps = steps;

@@ -6,7 +6,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { updateAnswers, updateResult } from "@/redux/interviewSlice";
 import { increment } from "../../redux/stageSlice";
-import finalResults from "../puter.js/GenerateResults";
+import finalResults from "../AIGenerates/GenerateResults";
 
 export default function InterviewQuestions() {
   const dispatch = useDispatch();
