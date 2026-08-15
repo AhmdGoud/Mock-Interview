@@ -4,7 +4,7 @@ A modern web application that helps users prepare for technical interviews throu
 
 ## 🌐 Live Demo
 
-**Demo:** https://ahmdgoud.github.io/Mock-Interview/
+**Demo:** https://mock-interview-theta-ten.vercel.app/
 
 ## 📸 Screenshots
 

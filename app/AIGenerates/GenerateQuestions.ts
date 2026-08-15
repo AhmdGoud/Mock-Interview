@@ -38,7 +38,6 @@ async function interviewQs(
   });
 
   const data = await response.json();
-  console.log("data from GQ is" + data.result); //
   return data.result;
 }
 export default interviewQs;

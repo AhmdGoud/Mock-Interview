@@ -37,20 +37,20 @@ export default function FinalResult() {
                 {jobData.roleTitle} — {jobData.seniorityLevel}
               </h2>
 
-              <p className="mt-2 max-w-3xl text-xs leading-6 text-[#666]">
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-[#666]">
                 <span>Overall Feedback: </span>
                 {parsedResults.overallFeedback}
               </p>
 
-              <p className="mt-2 -mb-1 text-sm leading-6 text-[#aaa]">
-                feedback in detail:
+              <p className="mt-2 -mb-1 text-sm leading-6 text-white">
+                Feedback in detail:
               </p>
 
               {parsedResults.questionsFeedback.map((q: string, i: number) => {
                 return (
                   <p
                     key={i}
-                    className="mt-1 max-w-3xl text-xs leading-6 text-[#666]"
+                    className="mt-1 max-w-3xl text-sm leading-6 text-[#666]"
                   >
                     {q}
                   </p>

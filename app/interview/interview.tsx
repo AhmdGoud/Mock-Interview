@@ -14,12 +14,15 @@ export default function InterviewQuestions() {
   const questions = useSelector(
     (state: RootState) => state.interview.questions,
   );
-  console.log("questions are" + questions); //
 
   const answers = useSelector((state: RootState) => state.interview.answers);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answer, setAnswer] = useState("");
+
+  const arrayOfQuestions = questions?.split(/\d+[.)]\s*/).filter(Boolean);
+  const progressBar = ((currentQuestion + 1) / arrayOfQuestions?.length) * 100;
+  const isLastQuestion = currentQuestion === arrayOfQuestions.length - 1;
 
   async function getFinalRes() {
     const results = await finalResults(arrayOfQuestions, answers);
@@ -33,13 +36,7 @@ export default function InterviewQuestions() {
         <p>Generating Questions</p>
       </div>
     );
-  }
-
-  const arrayOfQuestions = questions?.split(/\d+[.)]\s*/).filter(Boolean);
-  const progressBar = ((currentQuestion + 1) / arrayOfQuestions?.length) * 100;
-  const isLastQuestion = currentQuestion === arrayOfQuestions.length - 1;
-
-  if (questions) {
+  } else {
     return (
       <div className="mx-auto w-full max-w-2xl py-8">
         {/* progress bar */}
