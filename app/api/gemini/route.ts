@@ -13,9 +13,12 @@ export async function POST(request: Request) {
       contents: prompt,
     });
 
+    console.log(response);
+    console.log(Response.json({ result: response.text }));
+
     return Response.json({ result: response.text });
   } catch (error) {
-    console.log(error);
+    console.log("error is" + error);
     return Response.json({ error: "something went wrong" });
   }
 }
